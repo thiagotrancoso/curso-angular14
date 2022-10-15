@@ -4,9 +4,15 @@
         <button routerLink="/criar-pensamento" class="botao">Adicionar pensamento</button>
     </header>
 
-    <div class="mural">
+    <div class="mural" *ngIf="listaPensamentos.length, else semPensamentos">
         <div *ngFor="let pensamento of listaPensamentos">
             <app-pensamento [pensamento]="pensamento"></app-pensamento>
         </div>
     </div>
 </section>
+
+<ng-template #semPensamentos>
+    <div class="ff-inter sem-pensamentos">
+        <p>Nenhum pensamento cadastrado!</p>
+    </div>
+</ng-template>
