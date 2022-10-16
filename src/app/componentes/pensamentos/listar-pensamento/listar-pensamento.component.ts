@@ -7,13 +7,17 @@ import { PensamentoService } from '../pensamento.service';
     templateUrl: './listar-pensamento.component.html',
     styleUrls: ['./listar-pensamento.component.scss']
 })
-export class ListarPensamentoComponent implements OnInit {
-
+export class ListarPensamentoComponent implements OnInit
+{
     listaPensamentos: Pensamento[] = []
 
     constructor(private pensamentoService: PensamentoService) {}
 
-    ngOnInit(): void {
+    ngOnInit(): void
+    {
         this.pensamentoService.listar()
+            .subscribe((listaPensamentos) => {
+                this.listaPensamentos = listaPensamentos
+            })
     }
 }
